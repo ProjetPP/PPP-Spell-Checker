@@ -40,9 +40,11 @@ class RequestHandler:
     def answer(self):
         if not isinstance(self.request.tree, Sentence):
             return []
-        result = correctString(self.request.tree.value)
+        speller = aspell.Speller('lang', 'en')
+        result = correctString(self.request.tree.value,speller)
+        outputTree=Resource(result, value_type='sentence')
         meas = {'accuracy': 0.5, 'relevance': 0.5}
-        trace = self.request.trace + [TraceItem('spell-checker', result, meas)]
-        response = Response('en', result, meas, trace)
-        print(repr(response))
-        return [response]
+        trace = self.request.trace + [TraceItem('spell-checker', outputTree, meas)]
+        response = Response('en', outputTree, meas, trace)
+        print(repr(outputTree))
+        return [outputTree]

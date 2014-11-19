@@ -7,3 +7,4 @@ dist/
 ppp_spell_checker.egg-info/
 .coverage
 htmlcov
+ppp_spell_checker/__init__.pyc
