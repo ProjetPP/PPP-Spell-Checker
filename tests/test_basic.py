@@ -1,4 +1,4 @@
-from ppp_spell_checker import correctString
+from ppp_spell_checker import StringCorrector
 import aspell
 
 from unittest import TestCase
@@ -6,15 +6,14 @@ from unittest import TestCase
 class DependenciesTreeTests(TestCase):
 
     def testTrueSentences(self):
-        speller = aspell.Speller('lang', 'en')
+        corrector = StringCorrector()
         original='Who is the president of the United States?'
-        corrected=correctString(original,speller)
-        expected='Who is the president of the United States'
-        self.assertEqual(corrected,expected)
+        corrected=corrector.correctString(original)
+        self.assertEqual(corrected,original)
 
     def testFalseSentences(self):
-        speller = aspell.Speller('lang', 'en')
+        corrector = StringCorrector()
         original='Who is the pesident of the Uinted Statse?'
-        corrected=correctString(original,speller)
+        corrected=corrector.correctString(original)
         expected='Who is the president of the United States'
         self.assertEqual(corrected,expected)
