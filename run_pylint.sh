@@ -1,2 +1,2 @@
 #!/bin/bash
-pylint --rcfile=.pylintrc ppp-spell-checker
+pylint --rcfile=.pylintrc ppp_spell_checker

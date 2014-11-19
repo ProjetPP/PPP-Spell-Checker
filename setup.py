@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='ppp-spell-checker',
+    name='ppp_spell_checker',
     version='0.1',
     description='A spell checker for the PPP. Use the Aspell API.',
     url='https://github.com/ProjetPP',
@@ -28,6 +28,6 @@ setup(
         'ppp_libmodule>=0.6',
     ],
     packages=[
-        'ppp-spell-checker',
+        'ppp_spell_checker',
     ],
 )

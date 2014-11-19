@@ -10,7 +10,7 @@ localinstall:
 	$(PYTHON) setup.py install --user
 
 run:
-	gunicorn ppp-spell-checker:app
+	gunicorn ppp_spell_checker:app
 
 tests:
 	$(PYTHON) run_tests.py
