@@ -35,9 +35,14 @@ from ppp_core.exceptions import ClientError
 
 class RequestHandler:
     def __init__(self, request):
-        # TODO: Implement this
-        pass
+        self.request = request
 
     def answer(self):
-        # TODO: Implement this
-        pass
+        if not isinstance(self.request.tree, Sentence):
+            return []
+        result = correctString(self.request.tree.value)
+        meas = {'accuracy': 0.5, 'relevance': 0.5}
+        trace = self.request.trace + [TraceItem('spell-checker', result, meas)]
+        response = Response('en', result, meas, trace)
+        print(repr(response))
+        return [response]
