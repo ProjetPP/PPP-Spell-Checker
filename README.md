@@ -7,9 +7,9 @@ Dependencies:
 * python3-dev
 * libaspell-dev
 
-[![Build Status](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/build-status/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/?branch=master)
+<!--[![Build Status](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/build-status/master)-->
+<!--[![Code Coverage](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/?branch=master)-->
+<!--[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ProjetPP/PPP-Spell-Checker/?branch=master)-->
 
 ## How to install
 
