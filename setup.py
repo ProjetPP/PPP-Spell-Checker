@@ -31,3 +31,14 @@ setup(
         'ppp_spell_checker',
     ],
 )
+
+import sys
+if 'install' in sys.argv:
+    # From http://stackoverflow.com/questions/20415522/running-a-bash-script-from-python
+    import subprocess
+    cmd = "./dependencies.sh"
+    # no block, it start a sub process.
+    p = subprocess.Popen(cmd , shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    # and you can block util the cmd execute finish
+    p.wait()
+

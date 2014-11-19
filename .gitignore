@@ -1,0 +1,9 @@
+*~
+*.dot
+*.ps
+__pycache__
+build/
+dist/
+ppp_spell_checker.egg-info/
+.coverage
+htmlcov
