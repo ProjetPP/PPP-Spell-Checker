@@ -7,9 +7,9 @@ class StringCorrector:
     """
         A class to perform spell checking.
     """
-    def __init__(self):
+    def __init__(self, language):
         self.madeCorrection = False
-        self.speller = aspell.Speller('lang', 'en')
+        self.speller = aspell.Speller('lang', language)
     def correct(self,w):
         """
             Take in input a word.
@@ -52,7 +52,7 @@ class RequestHandler:
     def answer(self):
         if not isinstance(self.request.tree, Sentence):
             return []
-        corrector = StringCorrector()
+        corrector = StringCorrector(self.request.language)
         result = corrector.correctString(self.request.tree.value)
         if not corrector.madeCorrection:
             return []
