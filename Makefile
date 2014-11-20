@@ -4,11 +4,9 @@ PYTHON=python3
 all: install
 
 install:
-	./dependencies.sh
 	$(PYTHON) setup.py install
 
 localinstall:
-	./dependencies.sh
 	$(PYTHON) setup.py install --user
 
 run:
