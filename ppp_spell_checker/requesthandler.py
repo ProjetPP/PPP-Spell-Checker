@@ -10,9 +10,9 @@ class StringCorrector:
     """
         A class to perform spell checking.
     """
-    def __init__(self):
+    def __init__(self, language):
         self.madeCorrection = False
-        self.speller = aspell.Speller('lang', 'en')
+        self.speller = aspell.Speller('lang', language)
     def correct(self,w):
         """
             Take in input a word.
@@ -53,12 +53,13 @@ class RequestHandler:
     def answer(self):
         if not isinstance(self.request.tree, Sentence):
             return []
-        corrector = StringCorrector()
+        corrector = StringCorrector(self.request.language)
         result = corrector.correctString(self.request.tree.value)
         if not corrector.madeCorrection:
             return []
         outputTree=Resource(result)
-        meas = {'accuracy': 0.5, 'relevance': 1}
+        relevance = self.request.measures.get('relevance', 0) + 0.1
+        meas = {'accuracy': 0.5, 'relevance': relevance}
         trace = self.request.trace + [TraceItem('spell-checker', outputTree, meas)]
         response = Response(language='en', tree=outputTree, measures=meas, trace=trace)
         print(repr(response))
