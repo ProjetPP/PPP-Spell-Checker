@@ -23,3 +23,10 @@ class RequestHandlerTest(PPPTestCase(app)):
         self.assertIsInstance(answer[0].tree, Resource)
         result = answer[0].tree.__getattr__('value')
         self.assertEqual(result, expected)
+
+    def testIrrelevantInput(self):
+        original = 'What is the birth date of George Washington'
+        j = {'id': '1', 'language': 'en', 'measures': {}, 'trace': [],
+             'tree': {'type': 'resource', 'value': original}}
+        answer = self.request(j)
+        self.assertEquals(len(answer), 0)
