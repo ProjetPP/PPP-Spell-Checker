@@ -3,7 +3,6 @@
 Spell checking for the PPP, using the aspell API and a [Python wrapper](https://github.com/WojciechMula/aspell-python)
 
 Dependencies:
-* libpython3-dev
 * python3-dev
 * libaspell-dev
 
