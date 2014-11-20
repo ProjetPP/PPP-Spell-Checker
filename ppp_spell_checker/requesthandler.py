@@ -2,6 +2,9 @@
 
 import aspell
 import re
+from ppp_datamodel import Sentence, Resource
+from ppp_datamodel.communication import TraceItem, Response
+from ppp_libmodule.exceptions import ClientError
 
 class StringCorrector:
     """
@@ -43,8 +46,6 @@ class StringCorrector:
             return ' '.join(wordList)
         return s
 
-from ppp_core.exceptions import ClientError
-
 class RequestHandler:
     def __init__(self, request):
         self.request = request
@@ -56,9 +57,9 @@ class RequestHandler:
         result = corrector.correctString(self.request.tree.value)
         if not corrector.madeCorrection:
             return []
-        outputTree=Resource(result, value_type='sentence')
+        outputTree=Resource(result)
         meas = {'accuracy': 0.5, 'relevance': 1}
         trace = self.request.trace + [TraceItem('spell-checker', outputTree, meas)]
-        response = Response('en', outputTree, meas, trace)
-        print(repr(outputTree))
-        return [outputTree]
+        response = Response(language='en', tree=outputTree, measures=meas, trace=trace)
+        print(repr(response))
+        return [response]
