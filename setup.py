@@ -39,7 +39,6 @@ if 'install' in sys.argv:
     cmd = "./dependencies.sh"
     if '--user' in sys.argv:
         cmd = '{0} {1}'.format(cmd,'--user')
-    print("CMD=",cmd)
     # no block, it start a sub process.
     p = subprocess.Popen(cmd , shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     # and you can block util the cmd execute finish
