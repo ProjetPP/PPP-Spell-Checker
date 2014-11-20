@@ -8,4 +8,4 @@ else
     git clone git@github.com:WojciechMula/aspell-python.git
     cd aspell-python
 fi
-python3 setup.py install --user
+python3 setup.py install $1 # allow to run dependencies.sh with or without '--user' option
