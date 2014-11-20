@@ -6,13 +6,13 @@ from unittest import TestCase
 class DependenciesTreeTests(TestCase):
 
     def testTrueSentences(self):
-        corrector = StringCorrector()
+        corrector = StringCorrector('en')
         original='Who is the president of the United States?'
         corrected=corrector.correctString(original)
         self.assertEqual(corrected,original)
 
     def testFalseSentences(self):
-        corrector = StringCorrector()
+        corrector = StringCorrector('en')
         original='Who is the pesident of the Uinted Statse?'
         corrected=corrector.correctString(original)
         expected='Who is the president of the United States'
