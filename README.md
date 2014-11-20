@@ -16,12 +16,17 @@ Dependencies:
 With a recent version of pip:
 
 ```
+pip3 install git+https://github.com/WojciechMula/aspell-python.git
 pip3 install git+https://github.com/ProjetPP/PPP-Spell-Checker.git
 ```
 
 With an older one:
 
 ```
+git clone https://github.com/WojciechMula/aspell-python.git
+cd aspell-python
+python3 setup.py install
+cd ..
 git clone https://github.com/ProjetPP/PPP-Spell-Checker.git
 cd PPP-Spell-Checker
 python3 setup.py install
