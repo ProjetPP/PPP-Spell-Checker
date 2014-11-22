@@ -9,8 +9,7 @@ python:
 
 install:
     - sudo apt-get install python3-dev libaspell-dev
-    - pip install scrutinizer-ocular coverage webtest httmock requests ppp_datamodel ppp_core jsonrpclib-pelix
-    - pip3 install git+https://github.com/WojciechMula/aspell-python.git
+    - pip install scrutinizer-ocular coverage webtest httmock requests ppp_datamodel ppp_core jsonrpclib-pelix aspell-python
 
 before_script:
   - make install
