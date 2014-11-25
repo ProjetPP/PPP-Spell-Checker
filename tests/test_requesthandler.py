@@ -1,6 +1,6 @@
 from unittest import TestCase
 from ppp_datamodel.communication import Request
-from ppp_datamodel import Triple, Resource, Missing
+from ppp_datamodel import Triple, Resource, Missing, Sentence
 from ppp_libmodule.tests import PPPTestCase
 
 from ppp_spell_checker import app
