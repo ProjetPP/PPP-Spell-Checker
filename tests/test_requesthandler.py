@@ -11,7 +11,7 @@ class RequestHandlerTest(PPPTestCase(app)):
         j = {'id': '1', 'language': 'en', 'measures': {}, 'trace': [],
              'tree': {'type': 'sentence', 'value': original}}
         answer = self.request(j)
-        self.assertEquals(len(answer), 0)
+        self.assertEqual(len(answer), 0, answer)
 
     def testWrongSentence(self):
         original = 'Who is the pesident of the United States'
@@ -19,14 +19,12 @@ class RequestHandlerTest(PPPTestCase(app)):
         j = {'id': '1', 'language': 'en', 'measures': {}, 'trace': [],
              'tree': {'type': 'sentence', 'value': original}}
         answer = self.request(j)
-        self.assertEquals(len(answer), 1)
-        self.assertIsInstance(answer[0].tree, Sentence)
-        result = answer[0].tree.__getattr__('value')
-        self.assertEqual(result, expected)
+        self.assertEqual(len(answer), 1, answer)
+        self.assertEqual(answer[0].tree, Sentence(value=expected))
 
     def testIrrelevantInput(self):
         original = 'Who is the president of the United States'
         j = {'id': '1', 'language': 'en', 'measures': {}, 'trace': [],
              'tree': {'type': 'resource', 'value': original}}
         answer = self.request(j)
-        self.assertEquals(len(answer), 0)
+        self.assertEqual(len(answer), 0, answer)
