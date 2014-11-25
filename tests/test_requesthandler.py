@@ -20,7 +20,7 @@ class RequestHandlerTest(PPPTestCase(app)):
              'tree': {'type': 'sentence', 'value': original}}
         answer = self.request(j)
         self.assertEquals(len(answer), 1)
-        self.assertIsInstance(answer[0].tree, Resource)
+        self.assertIsInstance(answer[0].tree, Sentence)
         result = answer[0].tree.__getattr__('value')
         self.assertEqual(result, expected)
 
