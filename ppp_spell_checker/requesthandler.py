@@ -57,7 +57,7 @@ class RequestHandler:
         result = corrector.correctString(self.request.tree.value)
         if not corrector.madeCorrection:
             return []
-        outputTree=Resource(result)
+        outputTree=Sentence(result)
         relevance = self.request.measures.get('relevance', 0) + 0.1
         meas = {'accuracy': 0.5, 'relevance': relevance}
         trace = self.request.trace + [TraceItem('spell-checker', outputTree, meas)]
