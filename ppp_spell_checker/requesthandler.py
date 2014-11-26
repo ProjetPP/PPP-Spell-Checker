@@ -13,7 +13,8 @@ class StringCorrector:
     def __init__(self, language):
         self.madeCorrection = False
         self.speller = aspell.Speller('lang', language)
-    def correct(self,w):
+
+    def correct(self, w):
         """
             Take in input a word.
             Return the corrected word (unchanged if it was already correct).
@@ -23,18 +24,21 @@ class StringCorrector:
         else:
             self.madeCorrection = True
             return self.speller.suggest(w)[0]
-    def correctList(self,wordList):
+
+    def correctList(self, wordList):
         """
             Take in input a list of words.
             Return the list of correct words.
         """
         return [self.correct(w) for w in wordList]
+
     def tokenize(self,s):
         """
             Returns the list of the words in s.
         """
         return re.findall(r"[\w']+", s)
-    def correctString(self,s):
+
+    def correctString(self, s):
         """
             Return the corrected string.
             If no correction were made, the string remains unchanged.
@@ -57,7 +61,7 @@ class RequestHandler:
         result = corrector.correctString(self.request.tree.value)
         if not corrector.madeCorrection:
             return []
-        outputTree=Sentence(result)
+        outputTree = Sentence(result)
         relevance = self.request.measures.get('relevance', 0) + 0.1
         meas = {'accuracy': 0.5, 'relevance': relevance}
         trace = self.request.trace + [TraceItem('spell-checker', outputTree, meas)]
