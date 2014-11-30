@@ -15,5 +15,12 @@ class DependenciesTreeTests(TestCase):
         corrector = StringCorrector('en')
         original='Who is the pesident of the Uinted Statse?'
         corrected=corrector.correctString(original)
-        expected='Who is the president of the United States'
+        expected='Who is the president of the United States?'
+        self.assertEqual(corrected,expected)
+
+    def testPunctuation(self):
+        corrector = StringCorrector('en')
+        original=' * Who,. is! the : : pesident of the --- --- --- Uinted Statse? . ! '
+        corrected=corrector.correctString(original)
+        expected=' * Who,. is! the : : president of the --- --- --- United States? . ! '
         self.assertEqual(corrected,expected)

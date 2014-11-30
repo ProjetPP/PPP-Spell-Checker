@@ -41,14 +41,17 @@ class StringCorrector:
     def correctString(self, s):
         """
             Return the corrected string.
-            If no correction were made, the string remains unchanged.
-            Otherwise, punctuations marks might disapear.
         """
         wordList = self.tokenize(s)
-        wordList = self.correctList(wordList)
-        if self.madeCorrection:
-            return ' '.join(wordList)
-        return s
+        correctedList = self.correctList(wordList)
+        result = ""
+        for i in range(0,len(wordList)):
+            newId = s.index(wordList[i])
+            result += s[0:newId]
+            result += correctedList[i]
+            s=s[newId+len(wordList[i]):]
+        result += s
+        return result
 
 class RequestHandler:
     def __init__(self, request):

@@ -7,15 +7,15 @@ from ppp_spell_checker import app
 
 class RequestHandlerTest(PPPTestCase(app)):
     def testCorrectSentence(self):
-        original = 'Who is the president of the United States'
+        original = 'Who is the president of the United States?'
         j = {'id': '1', 'language': 'en', 'measures': {}, 'trace': [],
              'tree': {'type': 'sentence', 'value': original}}
         answer = self.request(j)
         self.assertEqual(len(answer), 0, answer)
 
     def testWrongSentence(self):
-        original = 'Who is the pesident of the United States'
-        expected = 'Who is the president of the United States'
+        original = 'Who is the pesident of the United States?'
+        expected = 'Who is the president of the United States?'
         j = {'id': '1', 'language': 'en', 'measures': {}, 'trace': [],
              'tree': {'type': 'sentence', 'value': original}}
         answer = self.request(j)
@@ -23,7 +23,7 @@ class RequestHandlerTest(PPPTestCase(app)):
         self.assertEqual(answer[0].tree, Sentence(value=expected))
 
     def testIrrelevantInput(self):
-        original = 'Who is the president of the United States'
+        original = 'Who is the president of the United States?'
         j = {'id': '1', 'language': 'en', 'measures': {}, 'trace': [],
              'tree': {'type': 'resource', 'value': original}}
         answer = self.request(j)
