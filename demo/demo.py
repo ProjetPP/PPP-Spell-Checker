@@ -8,6 +8,6 @@ import ppp_spell_checker
 
 
 if __name__ == "__main__":
-    corrector = ppp_spell_checker.StringCorrector('en')
     while(True):
+        corrector = ppp_spell_checker.StringCorrector('en')
         print(corrector.correctString(input("")))
