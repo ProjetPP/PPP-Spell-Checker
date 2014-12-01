@@ -21,6 +21,7 @@ class RequestHandlerTest(PPPTestCase(app)):
         answer = self.request(j)
         self.assertEqual(len(answer), 1, answer)
         self.assertEqual(answer[0].tree, Sentence(value=expected))
+        self.assertEqual(answer[0].measures['relevance'],1/8)
 
     def testIrrelevantInput(self):
         original = 'Who is the president of the United States?'
