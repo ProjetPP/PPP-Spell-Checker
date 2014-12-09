@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='ppp_spell_checker',
-    version='0.2',
+    version='0.2.1',
     description='A spell checker for the PPP. Use the Aspell API.',
     url='https://github.com/ProjetPP',
     author='Projet Pensées Profondes',
