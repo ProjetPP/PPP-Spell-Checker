@@ -118,5 +118,4 @@ class RequestHandler:
         meas = {'accuracy': 0.5, 'relevance': relevance}
         trace = self.request.trace + [TraceItem('spell-checker', outputTree, meas)]
         response = Response(language='en', tree=outputTree, measures=meas, trace=trace)
-        print(repr(response))
         return [response]
