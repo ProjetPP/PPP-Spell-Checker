@@ -58,7 +58,7 @@ class DependenciesTreeTests(TestCase):
 
     def testPunctuationQuotation(self):
         corrector = StringCorrector('en')
-        original=' * Who,. "is! the ": : pesident of the --- --- --"- Uinted Statse? ." ! '
+        original=' * Who,. "is! the ": : pesident “of” the ‘---’ --- --"- Uinted Statse? ." ! '
         corrected=corrector.correctString(original)
-        expected=' * Who,. "is! the ": : president of the --- --- --"- Uinted Statse? ." ! '
+        expected=' * Who,. "is! the ": : president “of” the ‘---’ --- --"- Uinted Statse? ." ! '
         self.assertEqual(corrected,expected)
