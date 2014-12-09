@@ -41,8 +41,7 @@ class DependenciesTreeTests(TestCase):
         expected=' * Who,. is! the : : president of the --- --- --- United States? . ! '
         self.assertEqual(corrected,expected)
 
-
-    def testTrueSentences(self):
+    def testTrueSentencesQuotation(self):
         corrector = StringCorrector('en')
         original='Who "is the" president of the "United States"?'
         corrected=corrector.correctString(original)
@@ -57,7 +56,7 @@ class DependenciesTreeTests(TestCase):
         self.assertEqual(corrected,expected)
         self.assertEqual(corrector.numberCorrections,1)
 
-    def testPunctuation(self):
+    def testPunctuationQuotation(self):
         corrector = StringCorrector('en')
         original=' * Who,. "is! the ": : pesident of the --- --- --"- Uinted Statse? ." ! '
         corrected=corrector.correctString(original)
