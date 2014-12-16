@@ -46,6 +46,8 @@ class StringCorrector:
             return w
         if self.speller.check(w.string):
             return w
+        if w.string.isdecimal():
+            return w
         else:
             self.numberCorrections += 1
             w.string = self.speller.suggest(w.string)[0]

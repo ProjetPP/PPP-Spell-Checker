@@ -19,6 +19,13 @@ class DependenciesTreeTests(TestCase):
         for w in tokens:
             self.assertEqual(w.string,s[w.beginOffset:w.beginOffset+len(w.string)])
 
+    def testNumber(self):
+        corrector = StringCorrector('en')
+        original = '42 92.123 1*2*42+3.7'
+        corrected=corrector.correctString(original)
+        self.assertEqual(original, corrected)
+        self.assertEqual(corrector.numberCorrections,0)
+
     def testTrueSentences(self):
         corrector = StringCorrector('en')
         original='Who is the president of the United States?'
