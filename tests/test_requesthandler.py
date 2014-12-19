@@ -25,8 +25,8 @@ class RequestHandlerTest(PPPTestCase(app)):
         self.assertEqual(answer[0].language,'en')
 
     def testOtherLanguage(self):
-        original = 'Qui est le présidet français?'
-        expected = 'Qui est le président français?'
+        original = 'ornithorinque'
+        expected = 'ornithorynque'
         j = {'id': '1', 'language': 'fr', 'measures': {}, 'trace': [],
             'tree': {'type': 'sentence', 'value': original}}
         answer = self.request(j)
