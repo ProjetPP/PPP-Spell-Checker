@@ -22,6 +22,17 @@ class RequestHandlerTest(PPPTestCase(app)):
         self.assertEqual(len(answer), 1, answer)
         self.assertEqual(answer[0].tree, Sentence(value=expected))
         self.assertEqual(answer[0].measures['relevance'],1/8)
+        self.assertEqual(answer[0].language,'en')
+
+    def testOtherLanguage(self):
+        original = 'ornithorinque'
+        expected = 'ornithorynque'
+        j = {'id': '1', 'language': 'fr', 'measures': {}, 'trace': [],
+            'tree': {'type': 'sentence', 'value': original}}
+        answer = self.request(j)
+        self.assertEqual(len(answer), 1, answer)
+        self.assertEqual(answer[0].tree, Sentence(value=expected))
+        self.assertEqual(answer[0].language,'fr')
 
     def testIrrelevantInput(self):
         original = 'Who is the president of the United States?'

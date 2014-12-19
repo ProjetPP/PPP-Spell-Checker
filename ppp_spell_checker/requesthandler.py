@@ -119,5 +119,5 @@ class RequestHandler:
         relevance = self.request.measures.get('relevance', 0) + corrector.numberCorrections/corrector.numberWords
         meas = {'accuracy': 0.5, 'relevance': relevance}
         trace = self.request.trace + [TraceItem('spell-checker', outputTree, meas)]
-        response = Response(language='en', tree=outputTree, measures=meas, trace=trace)
+        response = Response(language=self.request.language, tree=outputTree, measures=meas, trace=trace)
         return [response]
