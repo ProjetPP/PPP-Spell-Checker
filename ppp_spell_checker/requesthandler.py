@@ -30,7 +30,7 @@ class StringCorrector:
         A class to perform spell checking.
         A new instance of the object has to be created for each string.
     """
-    quotationList = ['‘','’','“','”','"']
+    quotationList = ['“','”','"']
     def __init__(self, language):
         self.numberCorrections = 0
         self.numberWords = 0
