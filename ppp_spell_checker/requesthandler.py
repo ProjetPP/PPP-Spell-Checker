@@ -11,13 +11,13 @@ class Word:
     """
         A class to manipulate words.
     """
-    def __init__(self,string,beginOffset):
+    def __init__(self, string, beginOffset):
         self.string = string
         self.corrected = False
         self.beginOffset = beginOffset
 
     def __str__(self):
-        return "({0},{1},{2})".format(str(self.string),str(self.corrected),str(self.beginOffset))
+        return "({0},{1},{2})".format(str(self.string), str(self.corrected), str(self.beginOffset))
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
@@ -30,7 +30,9 @@ class StringCorrector:
         A class to perform spell checking.
         A new instance of the object has to be created for each string.
     """
-    quotationList = ['“','”','"']
+    quotationRegexp = '|'.join(('{0}(?:\\\\.|[^{0}{1}\\\\])*{1}'.format(quote[0], quote[1]))
+        for quote in [('"', '"'), ("'", "'"), ('“', '”'), ('‘', '’'), ('«', '»')]
+    )
     def __init__(self, language):
         self.numberCorrections = 0
         self.numberWords = 0
@@ -61,31 +63,27 @@ class StringCorrector:
         """
         return [self.correct(w) for w in wordList]
 
-    def tokenize(self,s):
+    def tokenize(self, s):
         """
             Returns the list of the words in s.
         """
         wordList = re.findall(r"[\w']+", s)
         result = []
         wordId = 0
-        for i in range(0,len(wordList)):
+        for i in range(0, len(wordList)):
             newId = s.index(wordList[i])
             wordId += newId
-            result.append(Word(wordList[i],wordId))
+            result.append(Word(wordList[i], wordId))
             wordId += len(wordList[i])
             s=s[newId+len(wordList[i]):]
         return result
 
-    def quotationTraversal(self,s):
+    def quotationTraversal(self, s):
         """
             Fill the quotation set.
         """
-        inquote=False
-        for i in range(0,len(s)):
-            if s[i] in self.quotationList:
-                inquote = not inquote
-            elif inquote:
-                self.quotations.add(i)
+        for quote in re.finditer(self.quotationRegexp, s):
+            self.quotations = self.quotations.union(range(quote.start(), quote.end()))
 
     def correctString(self, s):
         """
@@ -97,7 +95,7 @@ class StringCorrector:
         correctedList = self.correctList([w.copy() for w in wordList])
         result = ""
         oldId = 0
-        for i in range(0,len(correctedList)):
+        for i in range(0, len(correctedList)):
             result += s[oldId:correctedList[i].beginOffset]
             result += correctedList[i].string
             oldId = correctedList[i].beginOffset+len(wordList[i].string)
