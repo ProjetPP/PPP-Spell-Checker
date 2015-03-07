@@ -78,3 +78,9 @@ class DependenciesTreeTests(TestCase):
         corrected=corrector.correctString(original)
         expected=' * Who,. “is! the ”: : president “of” the ‘---’ --- --"- Uinted Statse? ." ! '
         self.assertEqual(corrected, expected)
+
+    def testApostrophe(self):
+        corrector = StringCorrector('en')
+        original='I’m a string with a ‘quotation’.'
+        corrected=corrector.correctString(original)
+        self.assertEqual(corrected, original)
