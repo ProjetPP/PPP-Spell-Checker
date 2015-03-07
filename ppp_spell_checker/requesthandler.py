@@ -30,8 +30,8 @@ class StringCorrector:
         A class to perform spell checking.
         A new instance of the object has to be created for each string.
     """
-    quotationRegexp = '|'.join(('{0}(?:\\\\.|[^{0}{1}\\\\])*{1}'.format(quote[0], quote[1]))
-        for quote in [('"', '"'), ("'", "'"), ('“', '”'), ('‘', '’'), ('«', '»')]
+    quotationRegexp = '|'.join(r'{0}(?:\.|[^{0}{1}\\])*{1}'.format(quote[0], quote[1])
+        for quote in ['""', "''", '“”', '‘’', '«»']
     )
     def __init__(self, language):
         self.numberCorrections = 0
