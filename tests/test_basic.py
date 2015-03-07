@@ -51,7 +51,7 @@ class DependenciesTreeTests(TestCase):
 
     def testTrueSentencesQuotation(self):
         for quotes in itertools.permutations(
-                ['""', "''", '“”', '‘’', '«»'], 2):
+                ['""', '“”', '‘’', '«»'], 2):
             corrector = StringCorrector('en')
             original='Who %sis the%s president of the %sUnited States%s?' % (
                 quotes[0][0], quotes[0][1], quotes[1][0], quotes[1][1]
@@ -62,7 +62,7 @@ class DependenciesTreeTests(TestCase):
 
     def testFalseSentencesQuotation(self):
         for quotes in itertools.permutations(
-                ['""', "''", '“”', '‘’', '«»'], 2):
+                ['""', '“”', '‘’', '«»'], 2):
             corrector = StringCorrector('en')
             original='Who %sis the%s pesident of the %sUinted Statse%s?' % (
                 quotes[0][0], quotes[0][1], quotes[1][0], quotes[1][1]

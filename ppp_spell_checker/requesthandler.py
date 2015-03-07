@@ -31,7 +31,7 @@ class StringCorrector:
         A new instance of the object has to be created for each string.
     """
     quotationRegexp = '|'.join(r'{0}(?:\.|[^{0}{1}\\])*{1}'.format(quote[0], quote[1])
-        for quote in ['""', "''", '“”', '‘’', '«»']
+        for quote in ['""', '“”', '‘’', '«»']
     )
     def __init__(self, language):
         self.numberCorrections = 0
