@@ -8,8 +8,11 @@ python:
   - pypy3
 
 install:
-    - sudo apt-get install python3-dev libaspell-dev aspell-en aspell-fr 
-    - pip install scrutinizer-ocular coverage webtest httmock requests ppp_datamodel ppp_core jsonrpclib-pelix aspell-python-py3
+    - sudo apt-get install python3-dev libaspell-dev aspell-en aspell-fr
+    - pip install scrutinizer-ocular webtest httmock requests ppp_datamodel ppp_core jsonrpclib-pelix aspell-python-py3
+    # Coveralls 4.0 doesn't support Python 3.2
+    - if [ "$TRAVIS_PYTHON_VERSION" == "3.2" ]; then travis_retry pip install coverage==3.7.1; fi
+    - if [ "$TRAVIS_PYTHON_VERSION" != "3.2" ]; then travis_retry pip install coverage; fi
 
 before_script:
   - make install
